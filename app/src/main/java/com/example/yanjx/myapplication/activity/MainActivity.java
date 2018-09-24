@@ -2,11 +2,13 @@ package com.example.yanjx.myapplication.activity;
 
 import android.app.Activity;
 import android.app.Person;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,20 +22,48 @@ import com.google.gson.reflect.TypeToken;
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.image.ImageOptions;
+import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+@ContentView(R.layout.activity_main)
 public class MainActivity extends Activity {
+
+    @ViewInject(R.id.lv)
+    private ListView listView = null;
+
+//    @ViewInject(R.id.btn_setting)
+//    private Button btnSet = null;
+
+    @Event(value = R.id.btn_set)
+    private void openSecond(View view){
+        Intent intent=new Intent();
+        intent.setClass(this,SecondActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        x.view().inject(this);
 
-        final ListView listview = (ListView) findViewById(R.id.lv);
+//        btnSet.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i("test","setOnClickListener.....");
+//            }
+//        });
+
+
+
+//        setContentView(R.layout.activity_main);
+//        final ListView listview = (ListView) findViewById(R.id.lv);
         RequestParams params = new RequestParams("http://hiwbs101083.jsp.jspee.com.cn/ajaxServlet");
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
@@ -41,7 +71,7 @@ public class MainActivity extends Activity {
                 Log.i("test","result: "+result);
                 Gson gson=new Gson();
                 List<Content> conList = gson.fromJson(result,new TypeToken<List<Content>>(){}.getType());
-                listview.setAdapter(new MyAdapter(conList));
+                listView.setAdapter(new MyAdapter(conList));
 
             }
 
