@@ -19,6 +19,37 @@ public class SecondActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         x.view().inject(this);
+        Log.i("test",this.getClass() + " onCreate......");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i("test",this.getClass() + " onStart......");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("test",this.getClass() + " onResume......");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("test",this.getClass() + " onPause......");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("test",this.getClass() + " onStop......");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("test",this.getClass() + " onDestroy......");
     }
 
     @Event(value = R.id.btn_set)

@@ -48,10 +48,12 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         x.view().inject(this);
+        Log.i("test",this.getClass() + " onCreate......");
 
 //        btnSet.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -95,6 +97,37 @@ public class MainActivity extends Activity {
 
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i("test",this.getClass() + " onStart......");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("test",this.getClass() + " onResume......");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("test",this.getClass() + " onPause......");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("test",this.getClass() + " onStop......");
+   }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("test",this.getClass() + " onDestroy......");
+    }
+
 
     private class MyAdapter extends BaseAdapter{
 
