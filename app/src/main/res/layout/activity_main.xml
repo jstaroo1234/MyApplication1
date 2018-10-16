@@ -7,19 +7,21 @@
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
-<ListView
-    android:id="@+id/lv"
+<FrameLayout
+    android:id="@+id/framelayout"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="1">
 
-</ListView>
+</FrameLayout>
 
     <RadioGroup
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RadioButton
+            android:id="@+id/btn_home"
+            android:tag="home"
             style="@style/RadioButtonStyle"
             android:drawableTop="@drawable/png04_selector"
             android:text="首页" />
@@ -35,7 +37,8 @@
             android:text="联系人" />
 
         <RadioButton
-            android:id="@+id/btn_set"
+            android:id="@+id/btn_setting"
+            android:tag="setting"
             style="@style/RadioButtonStyle"
             android:drawableTop="@drawable/png02_selector"
             android:text="设置" />

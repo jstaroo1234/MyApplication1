@@ -52,7 +52,7 @@ public class SecondActivity extends Activity {
         Log.i("test",this.getClass() + " onDestroy......");
     }
 
-    @Event(value = R.id.btn_set)
+    @Event(value = R.id.btn_setting)
     private void openMain(View view){
         Log.i("test",view.toString());
         Intent intent=new Intent();
